@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import surahService from "../services/surah";
+import memorizationService from './../services/memorization';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
 export default class QuranMemorizationTable extends Component {
   state = {
-    surahList: []
+    memorizationInfo: []
   };
 
   columns = [
@@ -22,15 +22,16 @@ export default class QuranMemorizationTable extends Component {
       accessor: "totalAyah"
     },
     {
-      Header: "Memorized Ayahs" // Required because our accessor is not a string
+      Header: "Memorized Ayahs",
+      accessor: "memorizedAyah"
     }
   ];
 
   constructor() {
     super();
-    surahService.listSurah().then(s => {
+    memorizationService.getMemorizationInfo().then(data => {
       this.setState({
-        surahList: s
+        memorizationInfo: data
       });
     });
   }
@@ -39,7 +40,7 @@ export default class QuranMemorizationTable extends Component {
     return (
       <div>
         <ReactTable
-          data={this.state.surahList}
+          data={this.state.memorizationInfo}
           columns={this.columns}
           showPagination={false}
           defaultPageSize={114}
