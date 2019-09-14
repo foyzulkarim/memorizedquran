@@ -1,4 +1,4 @@
-export class Surah {
+export default class Surah {
     constructor(options) {
         this.serialNo = options.serialNo;
         this.name = options.name;
@@ -6,4 +6,3 @@ export class Surah {
         this.totalAyah = options.totalAyah;
     }
 }
-

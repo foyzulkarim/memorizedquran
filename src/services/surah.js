@@ -1,7 +1,7 @@
 import quranData from './../data/quran.json';
 import Surah from './../models/surah';
 
-export class SurahService {
+class SurahService {
     async listSurah() {
         return quranData.map((surah, index) => new Surah({
             name: surah.title,
@@ -11,3 +11,6 @@ export class SurahService {
         }));
     }
 }
+
+const surahService = new SurahService();
+export default surahService;
