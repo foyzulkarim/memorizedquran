@@ -1,4 +1,5 @@
 import surahService from './surah';
+import MemorizedInfo from '../models/memorized-info';
 
 class MemorizationService {
     async saveMemorizationInfo(data) {
@@ -12,13 +13,14 @@ class MemorizationService {
             return JSON.parse(memorizationInfoString);
         } else {
             const surahList = await surahService.listSurah();
-
-            const newMemorizationInfo = surahList.map(surah => Object.assign({}, surah, { memorizedAyah: 1}));
+            const newMemorizationInfo = surahList.map(surah => new MemorizedInfo({
+                surah,
+                memorizedAyah: 0
+            }));
             localStorage.setItem('memorizedQuran', JSON.stringify(newMemorizationInfo));
 
             return newMemorizationInfo;
         }
-
     }
 }
 
