@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/memorizedquran/static/css/main.2cce8147.chunk.css",
+    "main.js": "/memorizedquran/static/js/main.e09c56ac.chunk.js",
+    "main.js.map": "/memorizedquran/static/js/main.e09c56ac.chunk.js.map",
+    "runtime~main.js": "/memorizedquran/static/js/runtime~main.bb927b8c.js",
+    "runtime~main.js.map": "/memorizedquran/static/js/runtime~main.bb927b8c.js.map",
+    "static/css/2.2cff08c1.chunk.css": "/memorizedquran/static/css/2.2cff08c1.chunk.css",
+    "static/js/2.95d62067.chunk.js": "/memorizedquran/static/js/2.95d62067.chunk.js",
+    "static/js/2.95d62067.chunk.js.map": "/memorizedquran/static/js/2.95d62067.chunk.js.map",
+    "index.html": "/memorizedquran/index.html",
+    "precache-manifest.50a3b1ea15aa24c0367bbe79246c3c86.js": "/memorizedquran/precache-manifest.50a3b1ea15aa24c0367bbe79246c3c86.js",
+    "service-worker.js": "/memorizedquran/service-worker.js",
+    "static/css/2.2cff08c1.chunk.css.map": "/memorizedquran/static/css/2.2cff08c1.chunk.css.map",
+    "static/css/main.2cce8147.chunk.css.map": "/memorizedquran/static/css/main.2cce8147.chunk.css.map"
+  }
+}
