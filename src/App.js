@@ -3,7 +3,7 @@ import './App.css';
 import 'react-table/react-table.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import QuranMemorizationTable from './components/quran-memorization-table';
-import { Container, Row, Col, Jumbotron } from "react-bootstrap";
+import { Container, Jumbotron } from "react-bootstrap";
 
 function App() {
 
