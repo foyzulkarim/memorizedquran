@@ -9,6 +9,58 @@ export default class QuranMemorizationTable extends Component {
     memorizedTotal: 0
   };
 
+  columns = [
+    {
+      Header: "Index",
+      id: "surah.serialNo",
+      accessor: x => x.surah.serialNo
+    },
+    {
+      Header: "Name",
+      id: "surah.name",
+      accessor: x => x.surah.name
+    },
+    {
+      Header: "Total Ayahs",
+      id: "surah.totalAyah",
+      accessor: x => x.surah.totalAyah
+    },
+    {
+      Header: "Memorized Ayahs",
+      accessor: "memorizedAyah",
+      Cell: this.renderEditable.bind(this)
+    },
+    {
+      Header: "Profile Progress",
+      accessor: "memorizedAyah",
+      Cell: row => (
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#dadada",
+            borderRadius: "2px"
+          }}
+        >
+          <div
+            style={{
+              width: `${row.original.percent}%`,
+              height: "100%",
+              backgroundColor:
+                row.original.percent > 66
+                  ? "#85cc00"
+                  : row.original.percent > 33
+                  ? "#ffbf00"
+                  : "#ff2e00",
+              borderRadius: "2px",
+              transition: "all .2s ease-out"
+            }}
+          />
+        </div>
+      )
+    }
+  ];
+
   constructor() {
     super();
     memorizationService.getMemorizationInfo().then(data => {
@@ -18,8 +70,6 @@ export default class QuranMemorizationTable extends Component {
         memorizedTotal: total
       });
     });
-
-    this.renderEditable = this.renderEditable.bind(this);
   }
 
   renderEditable(cellInfo) {
@@ -62,57 +112,7 @@ export default class QuranMemorizationTable extends Component {
 
         <ReactTable
           data={this.state.memorizationInfo}
-          columns={[
-            {
-              Header: "Index",
-              id: "surah.serialNo",
-              accessor: x => x.surah.serialNo
-            },
-            {
-              Header: "Name",
-              id: "surah.name",
-              accessor: x => x.surah.name
-            },
-            {
-              Header: "Total Ayahs",
-              id: "surah.totalAyah",
-              accessor: x => x.surah.totalAyah
-            },
-            {
-              Header: "Memorized Ayahs",
-              accessor: "memorizedAyah",
-              Cell: this.renderEditable
-            },
-            {
-              Header: "Profile Progress",
-              accessor: "memorizedAyah",
-              Cell: row => (
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    backgroundColor: "#dadada",
-                    borderRadius: "2px"
-                  }}
-                >
-                  <div
-                    style={{
-                      width: `${row.original.percent}%`,
-                      height: "100%",
-                      backgroundColor:
-                        row.original.percent > 66
-                          ? "#85cc00"
-                          : row.original.percent > 33
-                          ? "#ffbf00"
-                          : "#ff2e00",
-                      borderRadius: "2px",
-                      transition: "all .2s ease-out"
-                    }}
-                  />
-                </div>
-              )
-            }
-          ]}
+          columns={this.columns}
           showPagination={false}
           defaultPageSize={114}
         />
